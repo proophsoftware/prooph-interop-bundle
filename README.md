@@ -10,6 +10,9 @@ Well, we at prooph software GmbH create framework agnostic factories/libraries a
 Framework new factories or service container. The factories are based on the container-interop specification and need
 an service `config` in the container to retrieve different component configuration.
 
+See [prooph-bundle project](https://github.com/proophsoftware/prooph-bundle "Symfony Bundle for prooph components") 
+to get started out of the box with message bus, CQRS, event sourcing and snapshots of the prooph components.
+
 ## Configuration
 In your `parameters.yml` you can define the key `interop_config` with a list of Symfony bundles where it's configuration
 should be put into the `config` service. This bundle provides the default value `prooph`, so the prooph component config
