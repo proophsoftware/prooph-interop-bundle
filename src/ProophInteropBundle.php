@@ -9,6 +9,8 @@
 
 namespace Prooph\InteropBundle;
 
+use Prooph\InteropBundle\DependencyInjection\Compiler\InteropConfigPass;
+use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
 /**
@@ -17,4 +19,8 @@ use Symfony\Component\HttpKernel\Bundle\Bundle;
  */
 class ProophInteropBundle extends Bundle
 {
+    public function build(ContainerBuilder $container)
+    {
+        $container->addCompilerPass(new InteropConfigPass());
+    }
 }
