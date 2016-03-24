@@ -30,10 +30,10 @@ class InteropConfigPass implements CompilerPassInterface
         foreach ($extensionNames as $extensionName) {
             // bundle name is top level key in the config service
             $config[$extensionName] = $processor->processConfiguration(
-                $configuration, $container->getExtensionConfig($extensionName.'_interop')
+                $configuration, $container->getExtensionConfig($extensionName)
             );
         }
 
-        $container->setParameter('interop_config', $config);
+        $container->setParameter('interop_config_parameters', $config);
     }
 }

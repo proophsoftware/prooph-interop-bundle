@@ -24,7 +24,7 @@ class ConfigFactory
      */
     public function __invoke(ContainerInterface $container)
     {
-        $config = $container->getParameter('interop_config');
+        $config = $container->getParameter('interop_config_parameters');
         return new \ArrayObject($config);
     }
 }
