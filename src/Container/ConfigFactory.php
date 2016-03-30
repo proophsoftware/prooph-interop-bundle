@@ -9,9 +9,7 @@
 
 namespace Prooph\InteropBundle\Container;
 
-use Prooph\InteropBundle\DependencyInjection\Configuration;
-use Symfony\Component\Config\Definition\Processor;
-use Symfony\Component\DependencyInjection\ContainerBuilder;
+use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
  * Creates an object with several bundle configurations depending on parameter "interop_config" definition
@@ -21,30 +19,12 @@ class ConfigFactory
     /**
      * Returns an \ArrayObject with the configuration of the defined extensions (parameter "interop_config")
      *
-     * @param ContainerBuilder $container
+     * @param ContainerInterface $container
      * @return \ArrayObject
      */
-    public function __invoke(ContainerBuilder $container)
+    public function __invoke(ContainerInterface $container)
     {
-        $configuration = new Configuration();
-        $processor = new Processor();
-
-        $extensionNames = $container->getParameterBag()->get('interop_config');
-
-        if (!is_array($extensionNames) && !$extensionNames instanceof \ArrayAccess) {
-            throw new \RuntimeException(
-                'The "interop_config" parameter must either be of type "array" or implement "\ArrayAccess".'
-            );
-        }
-
-        $config = [];
-
-        foreach ($extensionNames as $extensionName) {
-            // bundle name is top level key in the config service
-            $config[$extensionName] = $processor->processConfiguration(
-                $configuration, $container->getExtensionConfig($extensionName)
-            );
-        }
+        $config = $container->getParameter('interop_config_parameters');
         return new \ArrayObject($config);
     }
 }
