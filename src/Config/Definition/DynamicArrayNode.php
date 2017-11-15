@@ -55,8 +55,11 @@ class DynamicArrayNode extends ArrayNode
             }
 
             if (!isset($this->children[$k])) {
-                $this->children[$k] = new DynamicArrayNode($k);
+                $node = new DynamicArrayNode($k);
+                $node->setIgnoreExtraKeys($this->ignoreExtraKeys, $this->removeExtraKeys);
+                $this->children[$k] = $node;
             }
+
             $leftSide[$k] = $this->children[$k]->merge($leftSide[$k], $v);
         }
 
