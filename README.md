@@ -1,5 +1,8 @@
 # Symfony container-interop bundle
 
+## [Deprecated]
+Use [prooph symfony bundles](https://github.com/prooph?utf8=%E2%9C%93&q=symfony-bundle&type=&language=) instead
+
 ## Overview
 This Symfony bundle creates two services to have support for 
 ["container-interop"](https://github.com/container-interop/container-interop) in your Symfony application.
